@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // 9ya2p4ZdvITYNd8Q
 // 9ya2p4ZdvITYNd8Q
 import { Button } from "@/components/ui/button";
@@ -68,7 +69,7 @@ const Login = () => {
       toast.success(registerData.message || "Signup successfully .");
     }
     if (registerError) {
-      toast.error(registerData.data.message || "Signup Failed");
+      toast.error(registerError.data.message || "Signup Failed");
     }
     if (loginIsSuccess && loginData) {
       toast.success(loginData.message || "Login successfully .");
@@ -87,8 +88,7 @@ const Login = () => {
   ]);
   return (
     <div className="flex items-center w-full justify-center mt-20">
-      {" "}
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="login" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="signup">Signup</TabsTrigger>
           <TabsTrigger value="login">Login</TabsTrigger>
