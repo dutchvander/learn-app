@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// import { register } from "module"; هذا هو المشكل هذا هو
 import { userLoggedIn, userLoggedOut } from "../authSlice";
 
 const USER_API = "http://localhost:8080/api/v1/user/";
+
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
@@ -17,7 +17,6 @@ export const authApi = createApi({
         body: inputData,
       }),
     }),
-
     loginUser: builder.mutation({
       query: (inputData) => ({
         url: "login",
@@ -27,7 +26,7 @@ export const authApi = createApi({
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          dispatch(userLoggedIn)({ user: result.data.user });
+          dispatch(userLoggedIn({ user: result.data.user }));
         } catch (error) {
           console.log(error);
         }
@@ -51,6 +50,14 @@ export const authApi = createApi({
         url: "profile",
         method: "GET",
       }),
+      async onQueryStarted(_, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          dispatch(userLoggedIn({ user: result.data.user }));
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
     updateUser: builder.mutation({
       query: (formData) => ({

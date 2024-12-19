@@ -36,7 +36,10 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   // const user = true;
+  // const { user } = useSelector((store) => store.auth);
   const { user } = useSelector((store) => store.auth);
+
+  console.log("Current User:", user);
   // Simulated user authentication state
   const [logoutUser, { data, isSuccess }] = useLogoutUserMutation();
   const navigate = useNavigate();
@@ -52,7 +55,7 @@ const Navbar = () => {
   }, [isSuccess]);
 
   return (
-    <nav className="h-16 dark:bg-[#0A0A0A] bg-white border-b dark:border-b-gray-800 border-b-gray-200 fixed top-0 left-0 right-0 duration-300 z-10 flex items-center justify-between px-4">
+    <div className="h-16 dark:bg-[#0A0A0A] bg-white border-b dark:border-b-gray-800 border-b-gray-200 fixed top-0 left-0 right-0 duration-300 z-10 flex items-center justify-between px-4">
       <div className="flex items-center">
         <div className="flex md:hidden items-center justify-between px-4 h-full">
           <MobileNavbar />
@@ -109,16 +112,16 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <div className="flex items-center gap-2 hidden md:flex">
-            <Button variant="outline" onClick={() => navigate("/login")}>
-              Login
-            </Button>
-            <Button>Signup</Button>
-          </div>
+          <div className="flex items-center gap-2">
+          <Button variant="outline" onClick={() => navigate("/login")}>
+            Login
+          </Button>
+          <Button onClick={() => navigate("/login")}>Signup</Button>
+        </div>
         )}
         <DarkMode />
       </div>
-    </nav>
+    </div>
   );
 };
 
