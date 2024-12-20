@@ -76,6 +76,7 @@ const AddCourse = () => {
                 <SelectItem value="Frontend Development">
                   Frontend Development
                 </SelectItem>
+                <SelectItem value="Backend Development">Backend Development</SelectItem>
                 <SelectItem value="Fullstack Development">
                   Fullstack Development
                 </SelectItem>
@@ -87,6 +88,9 @@ const AddCourse = () => {
                 <SelectItem value="Docker">Docker</SelectItem>
                 <SelectItem value="MongoDB">MongoDB</SelectItem>
                 <SelectItem value="HTML">HTML</SelectItem>
+                <SelectItem value="JAVA">JAVA</SelectItem>
+                <SelectItem value="C++">C++</SelectItem>
+                
               </SelectGroup>
             </SelectContent>
           </Select>
