@@ -68,9 +68,14 @@ const Navbar = () => {
             className="hidden md:block h-12 w-12 md:h-16 md:w-16 rounded-full object-cover mr-[-8px]"
           />
           {/* Title visible only on mobile */}
+
           <h1 className="font-extrabold text-2xl block md:hidden">Eminence</h1>
           {/* Title visible only on medium and larger screens */}
-          <h1 className="font-extrabold text-2xl hidden md:block">Eminence</h1>
+          <Link to="/">
+            <h1 className="font-extrabold text-2xl hidden md:block">
+              Eminence
+            </h1>
+          </Link>
         </div>
       </div>
 
@@ -113,11 +118,11 @@ const Navbar = () => {
           </DropdownMenu>
         ) : (
           <div className="flex items-center gap-2">
-          <Button variant="outline" onClick={() => navigate("/login")}>
-            Login
-          </Button>
-          <Button onClick={() => navigate("/login")}>Signup</Button>
-        </div>
+            <Button variant="outline" onClick={() => navigate("/login")}>
+              Login
+            </Button>
+            <Button onClick={() => navigate("/login")}>Signup</Button>
+          </div>
         )}
         <DarkMode />
       </div>
