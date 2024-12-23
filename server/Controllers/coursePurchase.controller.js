@@ -182,44 +182,43 @@ const session = await stripe.checkout.sessions.create({
 
 */
 export const getCourseDetailWithPurchaseStatus = async (req, res) => {
-    try {
+  try {
     const { courseId } = req.params;
     const userId = req.id;
 
-        const course = await Course.findById(courseId)
-        .populate({ path: "creator" })
-        .populate({ path: "lectures" });
+    const course = await Course.findById(courseId)
+      .populate({ path: "creator" })
+      .populate({ path: "lectures" });
 
-        const purchased = await CoursePurchase.findOne({userId, courseId});
+    const purchased = await CoursePurchase.findOne({ userId, courseId });
 
-        if(!course){
-            return res.status(404).json({
-                message:"course not found !"
-            });
-
-        }
-        return res.status(200).json({
-            course,
-            purchased: !!purchased, // true if purchased , false else 
-        })
-    } catch (error) {
-        console.log(error);
+    if (!course) {
+      return res.status(404).json({
+        message: "course not found !",
+      });
     }
+    return res.status(200).json({
+      course,
+      purchased: !!purchased, // true if purchased , false else
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
-    export const getAllPurchasedCourse = async (_, res) => {
-        try {
-        const purchasedCourse = await CoursePurchase.find({
-            status: "completed",
-        }).populate("courseId");
-        if (!purchasedCourse) {
-            return res.status(404).json({
-            purchasedCourse: [],
-            });
-        }
-        return res.status(200).json({
-            purchasedCourse,
-        });
-        } catch (error) {
-        console.log(error);
-        }
-    };
+export const getAllPurchasedCourse = async (_, res) => {
+  try {
+    const purchasedCourse = await CoursePurchase.find({
+      status: "completed",
+    }).populate("courseId");
+    if (!purchasedCourse) {
+      return res.status(404).json({
+        purchasedCourse: [],
+      });
+    }
+    return res.status(200).json({
+      purchasedCourse,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
