@@ -102,7 +102,9 @@ const Navbar = () => {
                   {" "}
                   <Link to="profile">Edit Profile</Link>{" "}
                 </DropdownMenuItem>
+                <DropdownMenuItem><Link to="/admin/dashboard">Dashboard</Link></DropdownMenuItem>
                 <DropdownMenuItem onClick={logoutHandler}>
+
                   Log out
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -131,8 +133,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
-const MobileNavbar = () => {
+const MobileNavbar = ({user}) => {
   const role = "instructor";
+  const navigate = useNavigate();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -158,7 +161,7 @@ const MobileNavbar = () => {
         {role === "instructor" && (
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Dashboard</Button>
+              <Button type="submit" onClick={()=> navigate("/admin/dashboard")}>Dashboard</Button>
             </SheetClose>
           </SheetFooter>
         )}

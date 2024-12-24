@@ -17,6 +17,9 @@ import EditLecture from "./pages/lecture/EditLecture";
 import CourseDetail from "./pages/student/CourseDetail";
 import CourseProgress from "./pages/student/CourseProgress";
 import SearchPage from "./pages/student/SearchPage";
+import { AdminRoute, AuthenticatedUser, ProtectedRoute } from "./components/ProtectedRoutes";
+import PurchaseCourseProtectedRoute from "./components/PurchaseCourseProyectedRoute";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const appRouter = createBrowserRouter([
   {
@@ -34,47 +37,49 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        element: <AuthenticatedUser><Login /></AuthenticatedUser>,
       },
       {
         path: "my-learning",
-        element: <MyLearning />,
+        element: <ProtectedRoute><MyLearning /></ProtectedRoute>,
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <ProtectedRoute><Profile /></ProtectedRoute>,
       },
 
       {
         path: "course/search",
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
           <SearchPage />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
       },
 
       {
         path: "course-detail/:courseId",
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
           <CourseDetail />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
       },
       {
         path: "course-progress/:courseId",
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
+          <PurchaseCourseProtectedRoute>
           <CourseProgress />
-          // </ProtectedRoute>
+          </PurchaseCourseProtectedRoute>
+          </ProtectedRoute>
         ),
       },
 
       // admin routes start from here
       {
         path: "admin",
-        element: <Sidebar />,
+        element: <AdminRoute><Sidebar /></AdminRoute>,
         children: [
           {
             path: "dashboard",
@@ -117,7 +122,7 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <main>
-      <RouterProvider router={appRouter} />
+      <ThemeProvider><RouterProvider router={appRouter} /></ThemeProvider>
       {/* <HeroSection />
       <Navbar />
       <Login /> */}
