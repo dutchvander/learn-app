@@ -1,4 +1,3 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -163,7 +162,7 @@ const Profile = () => {
       <div>
         <h1 className="font-medium text-lg">Courses you are enrolled in :</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-5">
-          {user.enrollledCourses.length === 0 ? (
+          {user.enrolledCourses.length === 0 ? (
             <h1>You havn&apos;t enrolled yet </h1>
           ) : (
             user.enrolledCourses.map((course) => (

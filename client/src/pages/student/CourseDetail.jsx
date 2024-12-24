@@ -86,8 +86,8 @@ const CourseDetail = () => {
                 <ReactPlayer
                   width="100%"
                   height={"100%"}
-                  // url={course.lectures[0].videoUrl}
-                  url="https://youtu.be/0ehClx3QdPI?si=Qzh1Dw5Vt1JSxGgf"
+                  url={course.lectures[0].videoUrl}
+                  // url="https://youtu.be/0ehClx3QdPI?si=Qzh1Dw5Vt1JSxGgf"
                   controls={true}
                 />
               </div>

@@ -16,6 +16,7 @@ import CreateLecture from "./pages/lecture/CreateLecture";
 import EditLecture from "./pages/lecture/EditLecture";
 import CourseDetail from "./pages/student/CourseDetail";
 import CourseProgress from "./pages/student/CourseProgress";
+import SearchPage from "./pages/student/SearchPage";
 
 const appRouter = createBrowserRouter([
   {
@@ -42,6 +43,15 @@ const appRouter = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+
+      {
+        path: "course/search",
+        element: (
+          // <ProtectedRoute>
+          <SearchPage />
+          // </ProtectedRoute>
+        ),
       },
 
       {
